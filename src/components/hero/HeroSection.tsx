@@ -123,7 +123,7 @@ export default function HeroSection() {
             className="bg-clip-text text-transparent"
             style={{
               backgroundImage:
-                'linear-gradient(135deg, #f43f5e 0%, #fb7185 25%, #8b5cf6 50%, #38bdf8 75%, #22c55e 100%)',
+                'linear-gradient(135deg, #e11d48 0%, #fbbf24 40%, #e11d48 60%, #fbbf24 100%)',
               backgroundSize: '200% 200%',
               animation: 'gradientShift 6s ease-in-out infinite',
             }}

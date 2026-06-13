@@ -36,7 +36,7 @@ function HomePage() {
     <>
       <HeroSection />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16 md:space-y-24">
         <Section id="ruta" title="Ruta del Viaje" subtitle="15 días de aventura" icon={Calendar}>
           <TimelineSection />
         </Section>
@@ -52,7 +52,7 @@ function HomePage() {
         </Section>
 
         {/* Informative Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           <Section id="checklist" title="Checklist" subtitle="Que no se nos olvide nada" icon={CheckSquare}>
             <ChecklistSection />
           </Section>
@@ -72,8 +72,8 @@ function HomePage() {
 
 function PlannerPage() {
   return (
-    <div className="pt-24 min-h-screen bg-dark-bg">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16 md:space-y-24">
         
         <div>
           <h1 className="text-4xl font-bold text-white mb-2">Planificador</h1>
@@ -103,8 +103,8 @@ function PlannerPage() {
 
 function BudgetPage() {
   return (
-    <div className="pt-24 min-h-screen bg-dark-bg">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <Section id="presupuesto" title="Presupuesto" subtitle="Control de gastos del viaje" icon={Wallet}>
           <BudgetDashboard />
         </Section>
@@ -115,8 +115,8 @@ function BudgetPage() {
 
 function ReservationsView() {
   return (
-    <div className="pt-24 min-h-screen bg-dark-bg">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <Section id="reservas" title="Gestión de Reservas" subtitle="Panel central de pagos y reservas" icon={Bookmark}>
           <ReservationsPage />
         </Section>

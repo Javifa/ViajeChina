@@ -9,23 +9,23 @@ export default {
     extend: {
       colors: {
         dark: {
-          bg: '#0a0a0f',
-          surface: '#12121a',
-          elevated: '#1a1a28',
-          border: '#2a2a3e',
-          hover: '#22223a',
+          bg: '#0b0f19',
+          surface: '#111827',
+          elevated: '#1f2937',
+          border: '#374151',
+          hover: '#1e293b',
         },
         primary: {
-          DEFAULT: '#f43f5e',
-          glow: '#fb7185',
-          light: '#fda4af',
-          dark: '#be123c',
+          DEFAULT: '#e11d48', // Oriental Red
+          glow: '#f43f5e',
+          light: '#fb7185',
+          dark: '#9f1239',
         },
         secondary: {
-          DEFAULT: '#8b5cf6',
-          glow: '#a78bfa',
-          light: '#c4b5fd',
-          dark: '#6d28d9',
+          DEFAULT: '#fbbf24', // Imperial Gold
+          glow: '#fcd34d',
+          light: '#fde68a',
+          dark: '#d97706',
         },
         accent: {
           gold: '#f59e0b',
