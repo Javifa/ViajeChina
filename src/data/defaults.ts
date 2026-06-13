@@ -2,13 +2,13 @@ import type { BudgetConfig, Hotel, Restaurant, Transport, CityNotes } from '../t
 
 export const defaultBudget: BudgetConfig = {
   travelers: 7,
-  tripDays: 12,
+  tripDays: 15,
   categories: [
     { id: 'flights', name: 'Vuelos Int.', icon: 'Plane', amount: 600, color: '#38bdf8' },
-    { id: 'hotels', name: 'Hoteles', icon: 'Hotel', amount: 385, color: '#f43f5e' },
-    { id: 'trains', name: 'Trenes/Vuelos Int.', icon: 'Train', amount: 250, color: '#8b5cf6' },
-    { id: 'food', name: 'Comida', icon: 'UtensilsCrossed', amount: 200, color: '#22c55e' },
-    { id: 'entries', name: 'Entradas', icon: 'Ticket', amount: 120, color: '#f59e0b' },
+    { id: 'hotels', name: 'Hoteles', icon: 'Hotel', amount: 420, color: '#f43f5e' },
+    { id: 'trains', name: 'Trenes/Vuelos Int.', icon: 'Train', amount: 230, color: '#8b5cf6' },
+    { id: 'food', name: 'Comida', icon: 'UtensilsCrossed', amount: 230, color: '#22c55e' },
+    { id: 'entries', name: 'Entradas', icon: 'Ticket', amount: 130, color: '#f59e0b' },
     { id: 'extras', name: 'Compras Varias', icon: 'ShoppingBag', amount: 150, color: '#ec4899' },
     { id: 'transport', name: 'Transporte Local', icon: 'Car', amount: 50, color: '#06b6d4' },
   ],

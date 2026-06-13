@@ -5,9 +5,9 @@ import { getHoursUntilTrip } from '../../utils/helpers';
 
 const stats = [
   { icon: MapPin, label: 'Ciudades', value: '5', color: 'from-city-shanghai to-city-zhangjiajie' },
-  { icon: Calendar, label: 'Días', value: '12', color: 'from-primary to-primary-glow' },
+  { icon: Calendar, label: 'Días', value: '15', color: 'from-primary to-primary-glow' },
   { icon: Train, label: 'Trenes/Vuelos', value: '5', color: 'from-city-chongqing to-accent-gold' },
-  { icon: Wallet, label: 'Coste estimado', value: '~1.850€', color: 'from-secondary to-secondary-glow' },
+  { icon: Wallet, label: 'Coste estimado', value: '~1.810€', color: 'from-secondary to-secondary-glow' },
 ];
 
 const cityRoute = [
@@ -15,7 +15,7 @@ const cityRoute = [
   { name: 'Zhangjiajie', nameCn: '张家界', color: '#22c55e', days: '4-6' },
   { name: 'Chongqing', nameCn: '重庆', color: '#f97316', days: '7-8' },
   { name: 'Chengdu', nameCn: '成都', color: '#d946ef', days: '9' },
-  { name: 'Pekín', nameCn: '北京', color: '#ef4444', days: '10-11' },
+  { name: 'Pekín', nameCn: '北京', color: '#ef4444', days: '10-12' },
 ];
 
 export default function HeroSection() {
@@ -109,7 +109,7 @@ export default function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 text-xs font-medium text-gray-400">
             <span className="w-2 h-2 rounded-full bg-status-success animate-pulse" />
-            1 Septiembre 2026 · 7 amigos · 12 días
+            1 Septiembre 2026 · 7 amigos · 15 días
           </span>
         </motion.div>
 
@@ -141,7 +141,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
-          12 días recorriendo{' '}
+          15 días recorriendo{' '}
           <span className="text-city-shanghai font-medium">Shanghái</span>,{' '}
           <span className="text-city-zhangjiajie font-medium">Zhangjiajie</span>,{' '}
           <span className="text-city-chongqing font-medium">Chongqing</span>,{' '}
@@ -277,7 +277,7 @@ export default function HeroSection() {
             className="flex items-center justify-center gap-2 mt-4"
           >
             <Plane className="w-3 h-3 text-gray-600" />
-            <span className="text-[10px] text-gray-600">D12 · Vuelta a Shanghái</span>
+            <span className="text-[10px] text-gray-600">D15 · Vuelta a casa</span>
           </motion.div>
         </motion.div>
       </div>

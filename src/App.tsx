@@ -37,7 +37,7 @@ function HomePage() {
       <HeroSection />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 space-y-10 md:space-y-24">
-        <Section id="ruta" title="Ruta del Viaje" subtitle="12 días de aventura" icon={Calendar}>
+        <Section id="ruta" title="Ruta del Viaje" subtitle="15 días de aventura" icon={Calendar}>
           <TimelineSection />
         </Section>
 

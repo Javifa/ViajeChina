@@ -64,7 +64,7 @@ const InteractiveMap: React.FC = () => {
             Nuestra ruta por China
           </h2>
           <p className="text-gray-500 text-sm max-w-lg mx-auto">
-            5 ciudades, 12 días, 1 aventura épica. Haz clic en cada marcador para ver los detalles.
+            5 ciudades, 15 días, 1 aventura épica. Haz clic en cada marcador para ver los detalles.
           </p>
         </motion.div>
 
