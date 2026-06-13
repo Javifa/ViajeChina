@@ -47,13 +47,23 @@ const routeSegments: { from: City; to: City }[] = [
 function FitBounds() {
   const map = useMap();
   useEffect(() => {
-    // Wait a bit for container animations to finish before invalidating size
+    // Fix gray tiles issue by invalidating size whenever container resizes
+    const observer = new ResizeObserver(() => {
+      map.invalidateSize();
+    });
+    observer.observe(map.getContainer());
+
+    // Fit bounds initially
     const timer = setTimeout(() => {
       map.invalidateSize();
       const bounds = L.latLngBounds(cityList.map(c => [c.coordinates[0], c.coordinates[1]]));
       map.fitBounds(bounds, { padding: [20, 20], maxZoom: 6 });
     }, 400);
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, [map]);
   return null;
 }

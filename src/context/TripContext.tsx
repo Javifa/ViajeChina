@@ -71,13 +71,13 @@ export function useTripContext() {
 }
 
 export function TripProvider({ children }: { children: React.ReactNode }) {
-  const [hotels, setHotels] = useLocalStorage<Hotel[]>('china2026-hotels', defaultHotels);
-  const [restaurants, setRestaurants] = useLocalStorage<Restaurant[]>('china2026-restaurants', defaultRestaurants);
-  const [places, setPlaces] = useLocalStorage<Place[]>('china2026-places', defaultPlaces);
-  const [transport, setTransport] = useLocalStorage<Transport[]>('china2026-transport', defaultTransport);
+  const [hotels, setHotels] = useLocalStorage<Hotel[]>('china2026-hotels-v2', defaultHotels);
+  const [restaurants, setRestaurants] = useLocalStorage<Restaurant[]>('china2026-restaurants-v2', defaultRestaurants);
+  const [places, setPlaces] = useLocalStorage<Place[]>('china2026-places-v2', defaultPlaces);
+  const [transport, setTransport] = useLocalStorage<Transport[]>('china2026-transport-v2', defaultTransport);
   const [checklist, setChecklist] = useLocalStorage<ChecklistItem[]>('china2026-checklist', defaultChecklist);
   const [notes, setNotes] = useLocalStorage<CityNotes>('china2026-notes', defaultNotes);
-  const [budget, setBudget] = useLocalStorage<BudgetConfig>('china2026-budget', defaultBudget);
+  const [budget, setBudget] = useLocalStorage<BudgetConfig>('china2026-budget-v2', defaultBudget);
 
   // Hotels
   const addHotel = useCallback((hotel: Hotel) => setHotels(prev => [...prev, hotel]), [setHotels]);
