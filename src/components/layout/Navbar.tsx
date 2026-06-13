@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   MapPin,
@@ -7,6 +8,7 @@ import {
   CheckSquare,
   Smartphone,
   Compass,
+  Heart,
 } from 'lucide-react';
 import { useTripContext } from '../../context/TripContext';
 
@@ -26,6 +28,8 @@ const navLinks: NavLink[] = [
 ];
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const { progress } = useTripContext();
@@ -55,6 +59,22 @@ export default function Navbar() {
   }, [handleScroll]);
 
   const scrollToSection = (id: string) => {
+    if (id === 'wishlist') {
+      navigate('/wishlist');
+      return;
+    }
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -111,6 +131,18 @@ export default function Navbar() {
                   )}
                 </button>
               ))}
+              <div className="w-px h-5 bg-dark-border/50 mx-1" />
+              <button
+                onClick={() => scrollToSection('wishlist')}
+                className={`relative flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  location.pathname === '/wishlist'
+                    ? 'text-primary bg-primary/10 border border-primary/20'
+                    : 'text-gray-400 hover:text-white hover:bg-dark-elevated/50 border border-transparent'
+                }`}
+              >
+                <Heart className="w-4 h-4" />
+                <span>Wishlist</span>
+              </button>
             </div>
 
             {/* Progress + Mobile Menu Button */}

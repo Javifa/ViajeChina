@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Compass, MapPin, Calendar, Wallet, Menu } from 'lucide-react';
+import { Compass, MapPin, Calendar, Wallet, Menu, Heart } from 'lucide-react';
 
 const tabs = [
   { id: 'ruta', label: 'Ruta', icon: Compass },
@@ -10,11 +11,15 @@ const tabs = [
 ];
 
 export default function MobileTabBar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('ruta');
   const [showMoreMenu, setShowMoreMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      if (location.pathname !== '/') return;
+      
       const sections = [...tabs.map(t => t.id), 'checklist', 'apps'];
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
@@ -32,12 +37,30 @@ export default function MobileTabBar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (id: string) => {
+    if (id === 'wishlist') {
+      navigate('/wishlist');
+      setActiveTab('wishlist');
+      setShowMoreMenu(false);
+      return;
+    }
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Need to wait for render before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setActiveTab(id);
     setShowMoreMenu(false);
@@ -54,7 +77,7 @@ export default function MobileTabBar() {
             return (
               <button
                 key={tab.id}
-                onClick={() => scrollToSection(tab.id)}
+                onClick={() => handleNavigation(tab.id)}
                 className={`relative flex flex-col items-center justify-center w-16 h-12 transition-all duration-200 active:scale-95 ${
                   isActive ? 'text-primary' : 'text-gray-500 hover:text-gray-400'
                 }`}
@@ -98,7 +121,19 @@ export default function MobileTabBar() {
             
             <div className="px-6 py-4 space-y-4">
               <button 
-                onClick={() => scrollToSection('checklist')}
+                onClick={() => handleNavigation('wishlist')}
+                className="w-full flex items-center justify-between p-4 bg-dark-elevated/50 rounded-2xl active:scale-95 transition-transform border border-primary/30"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                    <Heart size={20} />
+                  </div>
+                  <span className="font-medium text-lg text-white">Wishlist (Nuevo)</span>
+                </div>
+              </button>
+
+              <button 
+                onClick={() => handleNavigation('checklist')}
                 className="w-full flex items-center justify-between p-4 bg-dark-elevated/50 rounded-2xl active:scale-95 transition-transform border border-dark-border/30"
               >
                 <div className="flex items-center gap-3">
@@ -110,7 +145,7 @@ export default function MobileTabBar() {
               </button>
               
               <button 
-                onClick={() => scrollToSection('apps')}
+                onClick={() => handleNavigation('apps')}
                 className="w-full flex items-center justify-between p-4 bg-dark-elevated/50 rounded-2xl active:scale-95 transition-transform border border-dark-border/30"
               >
                 <div className="flex items-center gap-3">
@@ -122,7 +157,7 @@ export default function MobileTabBar() {
               </button>
               
               <button 
-                onClick={() => scrollToSection('galeria')}
+                onClick={() => handleNavigation('galeria')}
                 className="w-full flex items-center justify-between p-4 bg-dark-elevated/50 rounded-2xl active:scale-95 transition-transform border border-dark-border/30"
               >
                 <div className="flex items-center gap-3">

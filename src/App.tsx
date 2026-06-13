@@ -23,6 +23,7 @@ import NotesSection from './components/notes/NotesSection';
 
 import BudgetDashboard from './components/budget/BudgetDashboard';
 import ReservationsPage from './components/reservations/ReservationsPage';
+import WishlistPage from './components/wishlist/WishlistPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -137,6 +138,7 @@ function App() {
         <Route path="/planner" element={<PlannerPage />} />
         <Route path="/budget" element={<BudgetPage />} />
         <Route path="/reservations" element={<ReservationsView />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
       </Routes>
 
       <Footer />
