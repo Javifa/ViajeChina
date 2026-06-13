@@ -205,8 +205,8 @@ function App() {
         <Route path="/herramientas" element={<ToolsPage />} />
         <Route path="/galeria" element={<GalleryPage />} />
         <Route path="/planificador" element={<PlannerPage />} />
-        <Route path="/budget" element={<BudgetPage />} />
-        <Route path="/reservations" element={<ReservationsView />} />
+        <Route path="/presupuesto" element={<BudgetPage />} />
+        <Route path="/reservas" element={<ReservationsView />} />
         <Route path="/wishlist" element={<WishlistPage />} />
       </Routes>
 
