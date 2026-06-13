@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Compass, MapPin, Calendar, Wallet, Menu } from 'lucide-react';
-import { useTripContext } from '../../context/TripContext';
 
 const tabs = [
   { id: 'ruta', label: 'Ruta', icon: Compass },
