@@ -26,7 +26,7 @@ const TimelineSection: React.FC = () => {
   ];
 
   return (
-    <section id="timeline-section" className="py-16 px-4 sm:px-6 lg:px-8">
+    <section id="timeline-section" className="py-8 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -41,7 +41,7 @@ const TimelineSection: React.FC = () => {
             <span className="text-xs font-medium text-primary">Itinerario completo</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-            15 días por China
+            12 días por China
           </h2>
           <p className="text-gray-500 text-sm max-w-lg mx-auto">
             Cada día planificado al detalle. Haz clic en cualquier día para ver las actividades.

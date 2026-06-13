@@ -1,5 +1,5 @@
 // ==================== CITY ====================
-export type CityId = 'shanghai' | 'zhangjiajie' | 'chongqing' | 'beijing';
+export type CityId = 'shanghai' | 'zhangjiajie' | 'chongqing' | 'chengdu' | 'beijing';
 
 export interface City {
   id: CityId;

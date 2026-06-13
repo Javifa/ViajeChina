@@ -152,7 +152,11 @@ function TransportForm({ transport: t, onSave, onClose }: {
   onClose: () => void;
 }) {
   const cityNames: Record<CityId, string> = {
-    shanghai: 'Shanghái', zhangjiajie: 'Zhangjiajie', chongqing: 'Chongqing', beijing: 'Pekín',
+    shanghai: 'Shanghái',
+    zhangjiajie: 'Zhangjiajie',
+    chongqing: 'Chongqing',
+    chengdu: 'Chengdu',
+    beijing: 'Pekín',
   };
   const [form, setForm] = useState<Partial<Transport>>({
     fromCity: t?.fromCity || 'shanghai',

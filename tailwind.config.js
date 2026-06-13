@@ -47,6 +47,7 @@ export default {
           shanghai: '#38bdf8',
           zhangjiajie: '#22c55e',
           chongqing: '#f97316',
+          chengdu: '#d946ef', // Fuchsia
           beijing: '#ef4444',
         },
       },

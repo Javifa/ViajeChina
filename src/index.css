@@ -16,16 +16,19 @@
   .text-city-shanghai { @apply text-[#38bdf8]; }
   .text-city-zhangjiajie { @apply text-[#22c55e]; }
   .text-city-chongqing { @apply text-[#f97316]; }
+  .text-city-chengdu { @apply text-[#d946ef]; }
   .text-city-beijing { @apply text-[#ef4444]; }
 
   .bg-city-shanghai { @apply bg-[#38bdf8]; }
   .bg-city-zhangjiajie { @apply bg-[#22c55e]; }
   .bg-city-chongqing { @apply bg-[#f97316]; }
+  .bg-city-chengdu { @apply bg-[#d946ef]; }
   .bg-city-beijing { @apply bg-[#ef4444]; }
 
   .border-city-shanghai { @apply border-[#38bdf8]; }
   .border-city-zhangjiajie { @apply border-[#22c55e]; }
   .border-city-chongqing { @apply border-[#f97316]; }
+  .border-city-chengdu { @apply border-[#d946ef]; }
   .border-city-beijing { @apply border-[#ef4444]; }
 }
 

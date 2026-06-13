@@ -36,11 +36,11 @@ function createCityIcon(color: string): L.DivIcon {
   });
 }
 
-// Route polyline coordinates (city order: Shanghai → Zhangjiajie → Chongqing → Beijing)
 const routeSegments: { from: City; to: City }[] = [
   { from: cities.shanghai, to: cities.zhangjiajie },
   { from: cities.zhangjiajie, to: cities.chongqing },
-  { from: cities.chongqing, to: cities.beijing },
+  { from: cities.chongqing, to: cities.chengdu },
+  { from: cities.chengdu, to: cities.beijing },
   { from: cities.beijing, to: cities.shanghai },
 ];
 
@@ -64,7 +64,7 @@ const InteractiveMap: React.FC = () => {
             Nuestra ruta por China
           </h2>
           <p className="text-gray-500 text-sm max-w-lg mx-auto">
-            4 ciudades, 15 días, 1 aventura épica. Haz clic en cada marcador para ver los detalles.
+            5 ciudades, 12 días, 1 aventura épica. Haz clic en cada marcador para ver los detalles.
           </p>
         </motion.div>
 

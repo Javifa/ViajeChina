@@ -4,17 +4,18 @@ import { MapPin, Calendar, Train, Wallet, Plane, ChevronDown } from 'lucide-reac
 import { getHoursUntilTrip } from '../../utils/helpers';
 
 const stats = [
-  { icon: MapPin, label: 'Ciudades', value: '4', color: 'from-city-shanghai to-city-zhangjiajie' },
-  { icon: Calendar, label: 'Días', value: '15', color: 'from-primary to-primary-glow' },
-  { icon: Train, label: 'Trenes', value: '4', color: 'from-city-chongqing to-accent-gold' },
-  { icon: Wallet, label: 'Coste estimado', value: '~2.190€', color: 'from-secondary to-secondary-glow' },
+  { icon: MapPin, label: 'Ciudades', value: '5', color: 'from-city-shanghai to-city-zhangjiajie' },
+  { icon: Calendar, label: 'Días', value: '12', color: 'from-primary to-primary-glow' },
+  { icon: Train, label: 'Trenes/Vuelos', value: '5', color: 'from-city-chongqing to-accent-gold' },
+  { icon: Wallet, label: 'Coste estimado', value: '~1.850€', color: 'from-secondary to-secondary-glow' },
 ];
 
 const cityRoute = [
-  { name: 'Shanghái', nameCn: '上海', color: '#38bdf8', days: '1-4' },
-  { name: 'Zhangjiajie', nameCn: '张家界', color: '#22c55e', days: '5-6' },
-  { name: 'Chongqing', nameCn: '重庆', color: '#f97316', days: '7-9' },
-  { name: 'Pekín', nameCn: '北京', color: '#ef4444', days: '10-14' },
+  { name: 'Shanghái', nameCn: '上海', color: '#38bdf8', days: '1-3' },
+  { name: 'Zhangjiajie', nameCn: '张家界', color: '#22c55e', days: '4-6' },
+  { name: 'Chongqing', nameCn: '重庆', color: '#f97316', days: '7-8' },
+  { name: 'Chengdu', nameCn: '成都', color: '#d946ef', days: '9' },
+  { name: 'Pekín', nameCn: '北京', color: '#ef4444', days: '10-11' },
 ];
 
 export default function HeroSection() {
@@ -108,7 +109,7 @@ export default function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 text-xs font-medium text-gray-400">
             <span className="w-2 h-2 rounded-full bg-status-success animate-pulse" />
-            1 Septiembre 2026 · 7 amigos · 15 días
+            1 Septiembre 2026 · 7 amigos · 12 días
           </span>
         </motion.div>
 
@@ -140,10 +141,11 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
-          15 días recorriendo{' '}
+          12 días recorriendo{' '}
           <span className="text-city-shanghai font-medium">Shanghái</span>,{' '}
           <span className="text-city-zhangjiajie font-medium">Zhangjiajie</span>,{' '}
-          <span className="text-city-chongqing font-medium">Chongqing</span> y{' '}
+          <span className="text-city-chongqing font-medium">Chongqing</span>,{' '}
+          <span className="text-city-chengdu font-medium">Chengdu</span> y{' '}
           <span className="text-city-beijing font-medium">Pekín</span>
         </motion.p>
 
@@ -223,10 +225,10 @@ export default function HeroSection() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1.5, delay: 1.2, ease: 'easeInOut' }}
-              className="absolute top-4 left-[10%] right-[10%] h-px bg-gradient-to-r from-city-shanghai via-city-zhangjiajie via-city-chongqing to-city-beijing origin-left"
+              className="absolute top-4 left-[10%] right-[10%] h-px bg-gradient-to-r from-city-shanghai via-city-zhangjiajie via-city-chongqing via-city-chengdu to-city-beijing origin-left"
               style={{
                 background:
-                  'linear-gradient(90deg, #38bdf8 0%, #22c55e 33%, #f97316 66%, #ef4444 100%)',
+                  'linear-gradient(90deg, #38bdf8 0%, #22c55e 25%, #f97316 50%, #d946ef 75%, #ef4444 100%)',
               }}
             />
 
@@ -275,7 +277,7 @@ export default function HeroSection() {
             className="flex items-center justify-center gap-2 mt-4"
           >
             <Plane className="w-3 h-3 text-gray-600" />
-            <span className="text-[10px] text-gray-600">D15 · Vuelta a casa</span>
+            <span className="text-[10px] text-gray-600">D12 · Vuelta a Shanghái</span>
           </motion.div>
         </motion.div>
       </div>

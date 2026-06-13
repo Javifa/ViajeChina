@@ -38,6 +38,7 @@ export function getCityColorClass(cityId: CityId): string {
     shanghai: 'text-city-shanghai',
     zhangjiajie: 'text-city-zhangjiajie',
     chongqing: 'text-city-chongqing',
+    chengdu: 'text-city-chengdu',
     beijing: 'text-city-beijing',
   };
   return map[cityId] || 'text-primary';
@@ -48,6 +49,7 @@ export function getCityBgClass(cityId: CityId): string {
     shanghai: 'bg-city-shanghai',
     zhangjiajie: 'bg-city-zhangjiajie',
     chongqing: 'bg-city-chongqing',
+    chengdu: 'bg-city-chengdu',
     beijing: 'bg-city-beijing',
   };
   return map[cityId] || 'bg-primary';
@@ -58,6 +60,7 @@ export function getCityBorderClass(cityId: CityId): string {
     shanghai: 'border-city-shanghai',
     zhangjiajie: 'border-city-zhangjiajie',
     chongqing: 'border-city-chongqing',
+    chengdu: 'border-city-chengdu',
     beijing: 'border-city-beijing',
   };
   return map[cityId] || 'border-primary';

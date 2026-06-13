@@ -14,22 +14,25 @@ interface PlaceCardProps {
 
 const cityGradients: Record<CityId, string> = {
   shanghai: 'from-sky-500/80 via-cyan-400/60 to-blue-600/80',
-  zhangjiajie: 'from-green-500/80 via-emerald-400/60 to-teal-600/80',
-  chongqing: 'from-orange-500/80 via-amber-400/60 to-yellow-600/80',
-  beijing: 'from-red-500/80 via-rose-400/60 to-pink-600/80',
+  zhangjiajie: 'from-city-zhangjiajie/20 via-transparent to-transparent',
+  chongqing: 'from-city-chongqing/20 via-transparent to-transparent',
+  chengdu: 'from-city-chengdu/20 via-transparent to-transparent',
+  beijing: 'from-city-beijing/20 via-transparent to-transparent',
 };
 
 const cityPatternColors: Record<CityId, string> = {
   shanghai: 'rgba(56,189,248,0.15)',
-  zhangjiajie: 'rgba(34,197,94,0.15)',
-  chongqing: 'rgba(249,115,22,0.15)',
-  beijing: 'rgba(239,68,68,0.15)',
+  zhangjiajie: 'rgba(34, 197, 94, 0.05)',
+  chongqing: 'rgba(249, 115, 22, 0.05)',
+  chengdu: 'rgba(217, 70, 239, 0.05)',
+  beijing: 'rgba(239, 68, 68, 0.05)',
 };
 
 const cityLabels: Record<CityId, string> = {
   shanghai: 'Shanghái',
   zhangjiajie: 'Zhangjiajie',
   chongqing: 'Chongqing',
+  chengdu: 'Chengdu',
   beijing: 'Pekín',
 };
 
@@ -37,6 +40,7 @@ const cityBadgeColors: Record<CityId, string> = {
   shanghai: 'bg-city-shanghai/20 text-city-shanghai border-city-shanghai/30',
   zhangjiajie: 'bg-city-zhangjiajie/20 text-city-zhangjiajie border-city-zhangjiajie/30',
   chongqing: 'bg-city-chongqing/20 text-city-chongqing border-city-chongqing/30',
+  chengdu: 'bg-city-chengdu/20 text-city-chengdu border-city-chengdu/30',
   beijing: 'bg-city-beijing/20 text-city-beijing border-city-beijing/30',
 };
 
