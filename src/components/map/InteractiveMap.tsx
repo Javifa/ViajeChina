@@ -53,15 +53,24 @@ function FitBounds() {
     });
     observer.observe(map.getContainer());
 
+    // Also run a quick interval just in case React Router or animations mess with layout
+    let count = 0;
+    const interval = setInterval(() => {
+      map.invalidateSize();
+      count++;
+      if (count > 10) clearInterval(interval);
+    }, 150);
+
     // Fit bounds initially
     const timer = setTimeout(() => {
       map.invalidateSize();
       const bounds = L.latLngBounds(cityList.map(c => [c.coordinates[0], c.coordinates[1]]));
       map.fitBounds(bounds, { padding: [20, 20], maxZoom: 6 });
-    }, 400);
+    }, 600);
 
     return () => {
       clearTimeout(timer);
+      clearInterval(interval);
       observer.disconnect();
     };
   }, [map]);
@@ -93,12 +102,8 @@ const InteractiveMap: React.FC = () => {
         </motion.div>
 
         {/* Map container */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative rounded-2xl overflow-hidden border border-dark-border/50 bg-dark-surface/80 backdrop-blur-xl"
+        <div
+          className="relative rounded-2xl overflow-hidden border border-dark-border/50 bg-dark-surface/80 backdrop-blur-xl animate-fade-in"
         >
           {/* City legend */}
           <div className="absolute top-3 right-3 z-[1000] flex flex-col gap-1.5">
@@ -201,7 +206,7 @@ const InteractiveMap: React.FC = () => {
               </Marker>
             ))}
           </MapContainer>
-        </motion.div>
+        </div>
 
         {/* Route summary below map */}
         <motion.div

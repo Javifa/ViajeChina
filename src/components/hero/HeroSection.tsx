@@ -7,7 +7,7 @@ const stats = [
   { icon: MapPin, label: 'Ciudades', value: '5', color: 'from-city-shanghai to-city-zhangjiajie' },
   { icon: Calendar, label: 'Días', value: '15', color: 'from-primary to-primary-glow' },
   { icon: Train, label: 'Trenes/Vuelos', value: '5', color: 'from-city-chongqing to-accent-gold' },
-  { icon: Wallet, label: 'Coste estimado', value: '~1.810€', color: 'from-secondary to-secondary-glow' },
+  { icon: Wallet, label: 'Coste estimado', value: '~1.800€', color: 'from-secondary to-secondary-glow' },
 ];
 
 const cityRoute = [
