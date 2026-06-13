@@ -1,27 +1,22 @@
 import { Heart, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const footerLinks = [
-  { id: 'ruta', label: 'Ruta' },
+  { id: 'itinerario', label: 'Ruta' },
   { id: 'mapa', label: 'Mapa' },
   { id: 'lugares', label: 'Lugares' },
   { id: 'presupuesto', label: 'Presupuesto' },
-  { id: 'checklist', label: 'Checklist' },
-  { id: 'apps', label: 'Apps' },
+  { id: 'herramientas', label: 'Herramientas' },
 ];
 
 const cities = [
   { name: 'Shanghái', color: 'text-city-shanghai' },
   { name: 'Zhangjiajie', color: 'text-city-zhangjiajie' },
   { name: 'Chongqing', color: 'text-city-chongqing' },
+  { name: 'Chengdu', color: 'text-city-chengdu' },
   { name: 'Pekín', color: 'text-city-beijing' },
 ];
 
-function scrollToSection(id: string) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-}
 
 export default function Footer() {
   return (
@@ -63,13 +58,14 @@ export default function Footer() {
             </h3>
             <nav className="grid grid-cols-2 gap-2">
               {footerLinks.map((link) => (
-                <button
+                <Link
                   key={link.id}
-                  onClick={() => scrollToSection(link.id)}
+                  to={`/${link.id}`}
+                  onClick={() => window.scrollTo(0, 0)}
                   className="text-sm text-gray-500 hover:text-primary transition-colors text-left py-1"
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
             </nav>
           </div>
@@ -82,7 +78,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-500">
               <li>📅 1 - 15 Septiembre 2026</li>
               <li>👥 7 viajeros</li>
-              <li>🏙️ 4 ciudades</li>
+              <li>🏙️ 5 ciudades</li>
               <li>🚄 4 trenes de alta velocidad</li>
             </ul>
           </div>

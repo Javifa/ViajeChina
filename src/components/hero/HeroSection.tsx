@@ -13,9 +13,9 @@ const stats = [
 const cityRoute = [
   { name: 'Shanghái', nameCn: '上海', color: '#38bdf8', days: '1-3' },
   { name: 'Zhangjiajie', nameCn: '张家界', color: '#22c55e', days: '4-6' },
-  { name: 'Chongqing', nameCn: '重庆', color: '#f97316', days: '7-8' },
-  { name: 'Chengdu', nameCn: '成都', color: '#d946ef', days: '9' },
-  { name: 'Pekín', nameCn: '北京', color: '#ef4444', days: '10-12' },
+  { name: 'Chongqing', nameCn: '重庆', color: '#f97316', days: '7-9' },
+  { name: 'Chengdu', nameCn: '成都', color: '#d946ef', days: '10' },
+  { name: 'Pekín', nameCn: '北京', color: '#ef4444', days: '11-13' },
 ];
 
 export default function HeroSection() {
