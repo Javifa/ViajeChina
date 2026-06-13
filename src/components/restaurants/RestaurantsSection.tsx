@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { UtensilsCrossed, MapPin, ExternalLink, Edit3, Trash2, Plus, Heart, X } from 'lucide-react';
+import { UtensilsCrossed, MapPin, ExternalLink, Edit3, Trash2, Plus, Heart, X, CheckCircle2 } from 'lucide-react';
 import { useTripContext } from '../../context/TripContext';
 import type { CityId, Restaurant } from '../../types';
 import { cities } from '../../data/cities';
@@ -16,7 +16,7 @@ const cityTabs: { id: CityId | 'all'; label: string }[] = [
 ];
 
 export default function RestaurantsSection() {
-  const { restaurants, addRestaurant, updateRestaurant, deleteRestaurant, toggleRestaurantFavorite } = useTripContext();
+  const { restaurants, addRestaurant, updateRestaurant, deleteRestaurant, toggleRestaurantFavorite, toggleRestaurantVisited } = useTripContext();
   const [activeCity, setActiveCity] = useState<CityId | 'all'>('all');
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -89,12 +89,22 @@ export default function RestaurantsSection() {
                     <span className="text-accent-gold">{rest.cuisine}</span>
                   </div>
                 </div>
-                <button
-                  onClick={() => toggleRestaurantFavorite(rest.id)}
-                  className="p-1.5 rounded-lg hover:bg-dark-elevated transition-colors"
-                >
-                  <Heart size={16} className={rest.isFavorite ? 'text-primary fill-primary' : 'text-gray-600'} />
-                </button>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => toggleRestaurantVisited(rest.id)}
+                    className="p-1.5 rounded-lg hover:bg-dark-elevated transition-colors"
+                    title="Marcar como visitado"
+                  >
+                    <CheckCircle2 size={16} className={rest.isVisited ? 'text-emerald-400' : 'text-gray-600'} />
+                  </button>
+                  <button
+                    onClick={() => toggleRestaurantFavorite(rest.id)}
+                    className="p-1.5 rounded-lg hover:bg-dark-elevated transition-colors"
+                    title="Añadir a favoritos"
+                  >
+                    <Heart size={16} className={rest.isFavorite ? 'text-primary fill-primary' : 'text-gray-600'} />
+                  </button>
+                </div>
               </div>
 
               <div className="flex items-center gap-3 my-3">

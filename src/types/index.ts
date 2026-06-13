@@ -67,6 +67,7 @@ export interface Restaurant {
   dianpingUrl?: string;
   notes: string;
   isFavorite: boolean;
+  isVisited?: boolean;
   imageUrl?: string;
 }
 
@@ -84,6 +85,7 @@ export interface Place {
   googleMapsUrl?: string;
   notes?: string;
   isFavorite: boolean;
+  isVisited?: boolean;
   isCustom?: boolean;
 }
 

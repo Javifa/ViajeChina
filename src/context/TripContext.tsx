@@ -19,6 +19,7 @@ interface TripContextType {
   updateRestaurant: (id: string, updates: Partial<Restaurant>) => void;
   deleteRestaurant: (id: string) => void;
   toggleRestaurantFavorite: (id: string) => void;
+  toggleRestaurantVisited: (id: string) => void;
 
   // Places
   places: Place[];
@@ -26,6 +27,7 @@ interface TripContextType {
   updatePlace: (id: string, updates: Partial<Place>) => void;
   deletePlace: (id: string) => void;
   togglePlaceFavorite: (id: string) => void;
+  togglePlaceVisited: (id: string) => void;
 
   // Transport
   transport: Transport[];
@@ -92,6 +94,8 @@ export function TripProvider({ children }: { children: React.ReactNode }) {
   const deleteRestaurant = useCallback((id: string) => setRestaurants(prev => prev.filter(r => r.id !== id)), [setRestaurants]);
   const toggleRestaurantFavorite = useCallback((id: string) =>
     setRestaurants(prev => prev.map(r => r.id === id ? { ...r, isFavorite: !r.isFavorite } : r)), [setRestaurants]);
+  const toggleRestaurantVisited = useCallback((id: string) =>
+    setRestaurants(prev => prev.map(r => r.id === id ? { ...r, isVisited: !r.isVisited } : r)), [setRestaurants]);
 
   // Places
   const addPlace = useCallback((p: Place) => setPlaces(prev => [...prev, p]), [setPlaces]);
@@ -100,6 +104,8 @@ export function TripProvider({ children }: { children: React.ReactNode }) {
   const deletePlace = useCallback((id: string) => setPlaces(prev => prev.filter(p => p.id !== id)), [setPlaces]);
   const togglePlaceFavorite = useCallback((id: string) =>
     setPlaces(prev => prev.map(p => p.id === id ? { ...p, isFavorite: !p.isFavorite } : p)), [setPlaces]);
+  const togglePlaceVisited = useCallback((id: string) =>
+    setPlaces(prev => prev.map(p => p.id === id ? { ...p, isVisited: !p.isVisited } : p)), [setPlaces]);
 
   // Transport
   const addTransport = useCallback((t: Transport) => setTransport(prev => [...prev, t]), [setTransport]);
@@ -147,8 +153,8 @@ export function TripProvider({ children }: { children: React.ReactNode }) {
 
   const value: TripContextType = {
     hotels, addHotel, updateHotel, deleteHotel, toggleHotelFavorite,
-    restaurants, addRestaurant, updateRestaurant, deleteRestaurant, toggleRestaurantFavorite,
-    places, addPlace, updatePlace, deletePlace, togglePlaceFavorite,
+    restaurants, addRestaurant, updateRestaurant, deleteRestaurant, toggleRestaurantFavorite, toggleRestaurantVisited,
+    places, addPlace, updatePlace, deletePlace, togglePlaceFavorite, togglePlaceVisited,
     transport, addTransport, updateTransport, deleteTransport,
     checklist, toggleChecklistItem, addChecklistItem, deleteChecklistItem,
     notes, updateNotes,

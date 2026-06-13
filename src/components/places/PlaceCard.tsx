@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Heart, Clock, ExternalLink, MapPin, Ticket } from 'lucide-react';
+import { Heart, Clock, ExternalLink, MapPin, Ticket, CheckCircle2, Edit3, Trash2 } from 'lucide-react';
 import type { Place } from '../../types';
 import type { CityId } from '../../types';
 import StarRating from '../ui/StarRating';
@@ -7,6 +7,9 @@ import StarRating from '../ui/StarRating';
 interface PlaceCardProps {
   place: Place;
   onToggleFavorite: (id: string) => void;
+  onToggleVisited: (id: string) => void;
+  onEdit?: (place: Place) => void;
+  onDelete?: (id: string) => void;
 }
 
 const cityGradients: Record<CityId, string> = {
@@ -37,7 +40,7 @@ const cityBadgeColors: Record<CityId, string> = {
   beijing: 'bg-city-beijing/20 text-city-beijing border-city-beijing/30',
 };
 
-export default function PlaceCard({ place, onToggleFavorite }: PlaceCardProps) {
+export default function PlaceCard({ place, onToggleFavorite, onToggleVisited, onEdit, onDelete }: PlaceCardProps) {
   const gradient = cityGradients[place.cityId];
   const patternColor = cityPatternColors[place.cityId];
 
@@ -104,22 +107,32 @@ export default function PlaceCard({ place, onToggleFavorite }: PlaceCardProps) {
           </h3>
         </div>
 
-        {/* Favorite toggle */}
-        <motion.button
-          whileTap={{ scale: 0.8 }}
-          onClick={() => onToggleFavorite(place.id)}
-          className="absolute top-3 right-3 p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-colors"
-          aria-label={place.isFavorite ? 'Quitar favorito' : 'Añadir favorito'}
-        >
-          <Heart
-            size={18}
-            className={
-              place.isFavorite
-                ? 'text-red-400 fill-red-400 drop-shadow-[0_0_6px_rgba(248,113,113,0.5)]'
-                : 'text-white/60'
-            }
-          />
-        </motion.button>
+        {/* Favorite & Visited toggles */}
+        <div className="absolute top-3 right-3 flex gap-2">
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            onClick={() => onToggleVisited(place.id)}
+            className="p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-colors"
+            title="Marcar como visitado"
+          >
+            <CheckCircle2
+              size={18}
+              className={place.isVisited ? 'text-emerald-400 drop-shadow-[0_0_6px_rgba(52,211,153,0.5)]' : 'text-white/60'}
+            />
+          </motion.button>
+          
+          <motion.button
+            whileTap={{ scale: 0.8 }}
+            onClick={() => onToggleFavorite(place.id)}
+            className="p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/10 hover:bg-black/50 transition-colors"
+            title="Añadir favorito"
+          >
+            <Heart
+              size={18}
+              className={place.isFavorite ? 'text-red-400 fill-red-400 drop-shadow-[0_0_6px_rgba(248,113,113,0.5)]' : 'text-white/60'}
+            />
+          </motion.button>
+        </div>
 
         {/* City badge */}
         <div className="absolute top-3 left-3">
@@ -163,21 +176,36 @@ export default function PlaceCard({ place, onToggleFavorite }: PlaceCardProps) {
           ) : null}
         </div>
 
-        {/* External link */}
-        {place.googleMapsUrl && (
-          <a
-            href={place.googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-300 transition-colors group/link"
-          >
-            <ExternalLink
-              size={12}
-              className="group-hover/link:text-primary transition-colors"
-            />
-            <span>Ver en Google Maps</span>
-          </a>
-        )}
+        {/* Footer actions */}
+        <div className="flex items-center gap-2 pt-3 border-t border-dark-border/30 mt-auto">
+          {place.googleMapsUrl && (
+            <a
+              href={place.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-300 transition-colors group/link"
+            >
+              <ExternalLink
+                size={12}
+                className="group-hover/link:text-primary transition-colors"
+              />
+              <span>Google Maps</span>
+            </a>
+          )}
+          
+          <div className="flex-1" />
+          
+          {place.isCustom && onEdit && (
+            <button onClick={() => onEdit(place)} className="p-1.5 rounded-lg text-gray-500 hover:text-white hover:bg-dark-elevated transition-colors">
+              <Edit3 size={14} />
+            </button>
+          )}
+          {place.isCustom && onDelete && (
+            <button onClick={() => onDelete(place.id)} className="p-1.5 rounded-lg text-gray-500 hover:text-red-400 hover:bg-red-500/10 transition-colors">
+              <Trash2 size={14} />
+            </button>
+          )}
+        </div>
       </div>
     </motion.div>
   );
