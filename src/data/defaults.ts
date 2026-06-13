@@ -4,12 +4,12 @@ export const defaultBudget: BudgetConfig = {
   travelers: 7,
   tripDays: 15,
   categories: [
-    { id: 'flights', name: 'Vuelos Int.', icon: 'Plane', amount: 700, color: '#38bdf8' },
+    { id: 'flights', name: 'Vuelos Int.', icon: 'Plane', amount: 800, color: '#38bdf8' },
     { id: 'hotels', name: 'Hoteles', icon: 'Hotel', amount: 250, color: '#f43f5e' },
     { id: 'trains', name: 'Trenes/Vuelos Int.', icon: 'Train', amount: 180, color: '#8b5cf6' },
     { id: 'food', name: 'Comida', icon: 'UtensilsCrossed', amount: 220, color: '#22c55e' },
     { id: 'entries', name: 'Entradas', icon: 'Ticket', amount: 150, color: '#f59e0b' },
-    { id: 'extras', name: 'Compras Varias', icon: 'ShoppingBag', amount: 250, color: '#ec4899' },
+    { id: 'extras', name: 'Compras Varias', icon: 'ShoppingBag', amount: 150, color: '#ec4899' },
     { id: 'transport', name: 'Transporte Local', icon: 'Car', amount: 50, color: '#06b6d4' },
   ],
 };

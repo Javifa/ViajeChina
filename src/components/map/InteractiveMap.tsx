@@ -161,7 +161,7 @@ const InteractiveMap: React.FC = () => {
                 position={[city.coordinates[0], city.coordinates[1]]}
                 icon={createCityIcon(city.color)}
               >
-                <Popup>
+                <Popup autoPanPadding={[20, 50]} keepInView={true}>
                   <div className="min-w-[220px] p-1 -m-1">
                     {/* Popup header */}
                     <div className="flex items-center gap-2 mb-2">

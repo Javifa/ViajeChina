@@ -10,9 +10,9 @@ export default function BudgetDashboard() {
   const [editingCat, setEditingCat] = useState<string | null>(null);
   const [editValue, setEditValue] = useState('');
 
-  const total = budget.categories.reduce((sum, c) => sum + c.amount, 0);
-  const perPerson = Math.round(total / budget.travelers);
-  const perDay = Math.round(total / budget.tripDays);
+  const perPerson = budget.categories.reduce((sum, c) => sum + c.amount, 0);
+  const total = perPerson * budget.travelers;
+  const perDay = Math.round(perPerson / budget.tripDays);
 
   const pieData = budget.categories.map(c => ({
     name: c.name,
@@ -40,7 +40,7 @@ export default function BudgetDashboard() {
         <div className="bg-dark-elevated border border-dark-border rounded-xl px-4 py-2 shadow-xl">
           <p className="text-white font-medium">{payload[0].name}</p>
           <p className="text-primary font-mono font-bold">{formatCurrency(payload[0].value)}</p>
-          <p className="text-gray-500 text-xs">{Math.round((payload[0].value / total) * 100)}% del total</p>
+          <p className="text-gray-500 text-xs">{Math.round((payload[0].value / perPerson) * 100)}% del total personal</p>
         </div>
       );
     }
@@ -52,7 +52,7 @@ export default function BudgetDashboard() {
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         {[
-          { label: 'Total estimado', value: formatCurrency(total), icon: Wallet, color: 'text-primary', glow: 'shadow-primary/20' },
+          { label: 'Total del grupo', value: formatCurrency(total), icon: Wallet, color: 'text-primary', glow: 'shadow-primary/20' },
           { label: 'Por persona', value: formatCurrency(perPerson), icon: Users, color: 'text-secondary', glow: 'shadow-secondary/20' },
           { label: 'Por día', value: formatCurrency(perDay), icon: Calendar, color: 'text-accent-emerald', glow: 'shadow-green-500/20' },
         ].map((card, i) => (
@@ -68,7 +68,7 @@ export default function BudgetDashboard() {
               <span className="text-sm text-gray-400">{card.label}</span>
             </div>
             <p className={`text-3xl font-bold font-mono ${card.color}`}>{card.value}</p>
-            {card.label === 'Por persona' && (
+            {card.label === 'Total del grupo' && (
               <p className="text-xs text-gray-500 mt-1">{budget.travelers} viajeros</p>
             )}
           </motion.div>
@@ -191,8 +191,8 @@ export default function BudgetDashboard() {
           ))}
         </div>
         <div className="flex items-center justify-between mt-6 pt-4 border-t border-dark-border/30">
-          <span className="text-gray-400 font-semibold">TOTAL</span>
-          <span className="text-2xl font-bold font-mono text-primary">{formatCurrency(total)}</span>
+          <span className="text-gray-400 font-semibold">TOTAL POR PERSONA</span>
+          <span className="text-2xl font-bold font-mono text-primary">{formatCurrency(perPerson)}</span>
         </div>
       </div>
     </div>
