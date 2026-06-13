@@ -106,18 +106,18 @@ const InteractiveMap: React.FC = () => {
           className="relative rounded-2xl overflow-hidden border border-dark-border/50 bg-dark-surface/80 backdrop-blur-xl animate-fade-in"
         >
           {/* City legend */}
-          <div className="absolute top-3 right-3 z-[1000] flex flex-col gap-1.5">
+          <div className="absolute top-3 right-3 z-[1000] hidden sm:flex flex-col gap-1.5">
             {cityList.map((city) => (
               <div
                 key={city.id}
-                className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-dark-bg/90 backdrop-blur-sm border border-dark-border/50"
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-dark-bg/90 backdrop-blur-sm border border-dark-border/50 shadow-lg"
               >
                 <div
                   className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                   style={{ backgroundColor: city.color }}
                 />
-                <span className="text-[10px] font-medium text-gray-300">{city.name}</span>
-                <span className="text-[10px] text-gray-600">{city.nameCn}</span>
+                <span className="text-[10px] font-medium text-gray-200">{city.name}</span>
+                <span className="text-[10px] text-gray-500">{city.nameCn}</span>
               </div>
             ))}
           </div>
@@ -169,19 +169,19 @@ const InteractiveMap: React.FC = () => {
                         className="w-3 h-3 rounded-full flex-shrink-0"
                         style={{ backgroundColor: city.color }}
                       />
-                      <h3 className="font-bold text-sm text-gray-900">
+                      <h3 className="font-bold text-base text-white">
                         {city.name}
                       </h3>
-                      <span className="text-xs text-gray-500">{city.nameCn}</span>
+                      <span className="text-xs text-gray-400">{city.nameCn}</span>
                     </div>
 
                     {/* Days info */}
-                    <div className="text-xs text-gray-600 mb-2">
+                    <div className="text-xs text-primary mb-2 font-medium">
                       📅 Días {city.days[0]} - {city.days[city.days.length - 1]} · {city.days.length} {city.days.length === 1 ? 'día' : 'días'}
                     </div>
 
                     {/* Description */}
-                    <p className="text-xs text-gray-700 mb-2 leading-relaxed">
+                    <p className="text-xs text-gray-300 mb-3 leading-relaxed">
                       {city.description}
                     </p>
 
@@ -190,13 +190,13 @@ const InteractiveMap: React.FC = () => {
                       {city.highlights.slice(0, 4).map((h) => (
                         <span
                           key={h}
-                          className="text-[10px] px-1.5 py-0.5 rounded-md bg-gray-100 text-gray-600"
+                          className="text-[10px] px-2 py-0.5 rounded-md bg-dark-bg text-gray-300 border border-dark-border/50"
                         >
                           {h}
                         </span>
                       ))}
                       {city.highlights.length > 4 && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-gray-100 text-gray-500">
+                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-dark-bg text-primary border border-primary/20">
                           +{city.highlights.length - 4} más
                         </span>
                       )}
