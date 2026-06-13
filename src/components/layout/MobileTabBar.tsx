@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Compass, MapPin, Calendar, Wallet, Menu, Heart } from 'lucide-react';
 
 const tabs = [
-  { id: 'ruta', label: 'Ruta', icon: Compass },
+  { id: 'itinerario', label: 'Ruta', icon: Compass },
   { id: 'mapa', label: 'Mapa', icon: MapPin },
   { id: 'lugares', label: 'Lugares', icon: Calendar },
   { id: 'presupuesto', label: 'Dinero', icon: Wallet },
@@ -13,56 +13,12 @@ const tabs = [
 export default function MobileTabBar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState('ruta');
+  const activeTab = location.pathname === '/' ? '' : location.pathname.substring(1);
   const [showMoreMenu, setShowMoreMenu] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (location.pathname !== '/') return;
-      
-      const sections = [...tabs.map(t => t.id), 'checklist', 'apps'];
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // Check what section is near the middle of the viewport
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-            if (tabs.find(t => t.id === sectionId)) {
-              setActiveTab(sectionId);
-            }
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
-
   const handleNavigation = (id: string) => {
-    if (id === 'wishlist') {
-      navigate('/wishlist');
-      setActiveTab('wishlist');
-      setShowMoreMenu(false);
-      return;
-    }
-
-    if (location.pathname !== '/') {
-      navigate('/');
-      // Need to wait for render before scrolling
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-    setActiveTab(id);
+    navigate(`/${id}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setShowMoreMenu(false);
   };
 
@@ -133,19 +89,7 @@ export default function MobileTabBar() {
               </button>
 
               <button 
-                onClick={() => handleNavigation('checklist')}
-                className="w-full flex items-center justify-between p-4 bg-dark-elevated/50 rounded-2xl active:scale-95 transition-transform border border-dark-border/30"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                    ✓
-                  </div>
-                  <span className="font-medium text-lg">Checklist de Viaje</span>
-                </div>
-              </button>
-              
-              <button 
-                onClick={() => handleNavigation('apps')}
+                onClick={() => handleNavigation('herramientas')}
                 className="w-full flex items-center justify-between p-4 bg-dark-elevated/50 rounded-2xl active:scale-95 transition-transform border border-dark-border/30"
               >
                 <div className="flex items-center gap-3">

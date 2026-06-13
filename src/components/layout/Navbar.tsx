@@ -6,7 +6,6 @@ import {
   Calendar,
   Wallet,
   CheckSquare,
-  Smartphone,
   Compass,
   Heart,
 } from 'lucide-react';
@@ -19,37 +18,22 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { id: 'ruta', label: 'Ruta', icon: <Compass className="w-4 h-4" /> },
+  { id: 'itinerario', label: 'Ruta', icon: <Calendar className="w-4 h-4" /> },
   { id: 'mapa', label: 'Mapa', icon: <MapPin className="w-4 h-4" /> },
-  { id: 'lugares', label: 'Lugares', icon: <Calendar className="w-4 h-4" /> },
+  { id: 'lugares', label: 'Lugares', icon: <Compass className="w-4 h-4" /> },
   { id: 'presupuesto', label: 'Presupuesto', icon: <Wallet className="w-4 h-4" /> },
-  { id: 'checklist', label: 'Checklist', icon: <CheckSquare className="w-4 h-4" /> },
-  { id: 'apps', label: 'Apps', icon: <Smartphone className="w-4 h-4" /> },
+  { id: 'herramientas', label: 'Herramientas', icon: <CheckSquare className="w-4 h-4" /> },
 ];
 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeSection, setActiveSection] = useState('');
+  const activeSection = location.pathname.substring(1);
   const [scrolled, setScrolled] = useState(false);
   const { progress } = useTripContext();
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
-
-    const sections = navLinks.map((link) => link.id);
-    let currentSection = '';
-
-    for (const sectionId of sections) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= 120) {
-          currentSection = sectionId;
-        }
-      }
-    }
-    setActiveSection(currentSection);
   }, []);
 
   useEffect(() => {
@@ -58,27 +42,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  const scrollToSection = (id: string) => {
-    if (id === 'wishlist') {
-      navigate('/wishlist');
-      return;
-    }
-
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-      return;
-    }
-
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleNavigation = (id: string) => {
+    navigate(`/${id}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -97,7 +63,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <motion.button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => { navigate('/'); window.scrollTo(0,0); }}
               className="flex items-center gap-2 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -113,7 +79,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <button
                   key={link.id}
-                  onClick={() => scrollToSection(link.id)}
+                  onClick={() => handleNavigation(link.id)}
                   className={`relative flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     activeSection === link.id
                       ? 'text-primary'
@@ -133,9 +99,9 @@ export default function Navbar() {
               ))}
               <div className="w-px h-5 bg-dark-border/50 mx-1" />
               <button
-                onClick={() => scrollToSection('wishlist')}
+                onClick={() => handleNavigation('wishlist')}
                 className={`relative flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  location.pathname === '/wishlist'
+                  activeSection === 'wishlist'
                     ? 'text-primary bg-primary/10 border border-primary/20'
                     : 'text-gray-400 hover:text-white hover:bg-dark-elevated/50 border border-transparent'
                 }`}

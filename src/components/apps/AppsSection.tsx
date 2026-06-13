@@ -42,7 +42,7 @@ export default function AppsSection() {
       </div>
 
       {/* Grid */}
-      <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-5 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-5 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:overflow-visible sm:pb-0">
         {apps.map((app, index) => {
           const IconComponent = iconMap[app.icon] || Smartphone;
 
@@ -53,7 +53,7 @@ export default function AppsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-20px' }}
               transition={{ duration: 0.4, delay: index * 0.07 }}
-              className="flex-[0_0_85%] max-w-[320px] snap-center sm:flex-auto sm:max-w-none"
+              className="flex-[0_0_85%] max-w-[320px] snap-center sm:block sm:max-w-none"
             >
               <motion.div
                 whileHover={{ y: -4 }}

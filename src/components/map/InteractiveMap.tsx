@@ -1,5 +1,5 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import React, { useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { motion } from 'motion/react';
@@ -43,6 +43,15 @@ const routeSegments: { from: City; to: City }[] = [
   { from: cities.chengdu, to: cities.beijing },
   { from: cities.beijing, to: cities.shanghai },
 ];
+
+function FitBounds() {
+  const map = useMap();
+  useEffect(() => {
+    const bounds = L.latLngBounds(cityList.map(c => [c.coordinates[0], c.coordinates[1]]));
+    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 6 });
+  }, [map]);
+  return null;
+}
 
 const InteractiveMap: React.FC = () => {
   return (
@@ -96,11 +105,12 @@ const InteractiveMap: React.FC = () => {
           <MapContainer
             center={[32, 112]}
             zoom={5}
-            scrollWheelZoom={true}
+            scrollWheelZoom={false}
             className="w-full h-[400px] sm:h-[500px] lg:h-[550px]"
             style={{ background: '#0a0a0f' }}
             zoomControl={false}
           >
+            <FitBounds />
             {/* Dark map tiles */}
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'

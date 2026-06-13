@@ -119,7 +119,7 @@ export default function GallerySection() {
       </div>
 
       {/* Masonry Grid (Desktop) / Carousel (Mobile) */}
-      <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:block sm:columns-2 lg:columns-3 xl:columns-4 sm:space-y-4">
+      <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:block sm:columns-2 lg:columns-3 xl:columns-4 sm:space-y-4 sm:overflow-visible sm:pb-0">
         {galleryItems.map((item, index) => (
           <motion.div
             key={item.id}
@@ -127,7 +127,7 @@ export default function GallerySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: index * 0.04 }}
-            className="flex-[0_0_75%] sm:flex-none snap-center sm:break-inside-avoid"
+            className="flex-[0_0_75%] sm:block sm:w-auto snap-center sm:break-inside-avoid"
           >
             <motion.div
               whileHover={{ scale: 1.03 }}

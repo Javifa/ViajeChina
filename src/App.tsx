@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { MapPin, Calendar, Compass, ShoppingBag, CheckSquare, Hotel, UtensilsCrossed, Train, Wallet, Bookmark } from 'lucide-react';
 
@@ -37,38 +37,102 @@ function HomePage() {
   return (
     <>
       <HeroSection />
-      
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 space-y-10 md:space-y-24 pb-24 md:pb-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 pb-24 md:pb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <LinkCard to="/itinerario" icon={Calendar} title="Itinerario" desc="15 días paso a paso" />
+          <LinkCard to="/mapa" icon={MapPin} title="Mapa" desc="Ruta por 5 ciudades" />
+          <LinkCard to="/lugares" icon={Compass} title="Imprescindibles" desc="Qué ver en cada sitio" />
+          <LinkCard to="/herramientas" icon={ShoppingBag} title="Herramientas" desc="Apps y checklist" />
+          <LinkCard to="/galeria" icon={MapPin} title="Galería" desc="Inspiración visual" />
+          <LinkCard to="/planificador" icon={Hotel} title="Planificador" desc="Hoteles y transporte" />
+          <LinkCard to="/presupuesto" icon={Wallet} title="Presupuesto" desc="Control de gastos" />
+          <LinkCard to="/wishlist" icon={Bookmark} title="Wishlist" desc="Sitios guardados" />
+        </div>
+      </main>
+    </>
+  );
+}
+
+function LinkCard({ to, icon: Icon, title, desc }: { to: string, icon: any, title: string, desc: string }) {
+  const navigate = useNavigate();
+  return (
+    <div 
+      onClick={() => navigate(to)}
+      className="cursor-pointer group bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 rounded-2xl p-5 hover:border-primary/50 transition-all active:scale-95 flex flex-col items-center text-center gap-3"
+    >
+      <div className="w-12 h-12 rounded-full bg-dark-elevated flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+        <Icon size={24} />
+      </div>
+      <div>
+        <h3 className="text-white font-bold">{title}</h3>
+        <p className="text-xs text-gray-400 mt-1">{desc}</p>
+      </div>
+    </div>
+  );
+}
+
+function ItineraryPage() {
+  return (
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 pb-24 md:pb-12">
         <Section id="ruta" title="Ruta del Viaje" subtitle="15 días de aventura" icon={Calendar}>
           <TimelineSection />
         </Section>
+      </main>
+    </div>
+  );
+}
 
+function MapPage() {
+  return (
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 pb-24 md:pb-12">
         <Section id="mapa" title="Mapa Interactivo" subtitle="La ruta por el gigante asiático" icon={MapPin}>
-          <div className="h-[500px] rounded-2xl overflow-hidden border border-dark-border/50 shadow-2xl relative z-0">
+          <div className="h-[600px] rounded-2xl overflow-hidden border border-dark-border/50 shadow-2xl relative z-0">
             <InteractiveMap />
           </div>
         </Section>
+      </main>
+    </div>
+  );
+}
 
+function PlacesPage() {
+  return (
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 pb-24 md:pb-12">
         <Section id="lugares" title="Imprescindibles" subtitle="Los sitios que no nos podemos perder" icon={Compass}>
           <PlacesSection />
         </Section>
+      </main>
+    </div>
+  );
+}
 
-        {/* Informative Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          <Section id="checklist" title="Checklist" subtitle="Que no se nos olvide nada" icon={CheckSquare}>
-            <ChecklistSection />
-          </Section>
-          
-          <Section id="apps" title="Apps Necesarias" subtitle="Imprescindibles para sobrevivir en China" icon={ShoppingBag}>
-            <AppsSection />
-          </Section>
-        </div>
+function ToolsPage() {
+  return (
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 space-y-12 pb-24 md:pb-12">
+        <Section id="checklist" title="Checklist" subtitle="Que no se nos olvide nada" icon={CheckSquare}>
+          <ChecklistSection />
+        </Section>
+        <Section id="apps" title="Apps Necesarias" subtitle="Imprescindibles para sobrevivir en China" icon={ShoppingBag}>
+          <AppsSection />
+        </Section>
+      </main>
+    </div>
+  );
+}
 
+function GalleryPage() {
+  return (
+    <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 pb-24 md:pb-12">
         <Section id="galeria" title="Inspiración" subtitle="Lo que nos espera" icon={Compass}>
           <GallerySection />
         </Section>
       </main>
-    </>
+    </div>
   );
 }
 
@@ -135,7 +199,12 @@ function App() {
       
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/planner" element={<PlannerPage />} />
+        <Route path="/itinerario" element={<ItineraryPage />} />
+        <Route path="/mapa" element={<MapPage />} />
+        <Route path="/lugares" element={<PlacesPage />} />
+        <Route path="/herramientas" element={<ToolsPage />} />
+        <Route path="/galeria" element={<GalleryPage />} />
+        <Route path="/planificador" element={<PlannerPage />} />
         <Route path="/budget" element={<BudgetPage />} />
         <Route path="/reservations" element={<ReservationsView />} />
         <Route path="/wishlist" element={<WishlistPage />} />
