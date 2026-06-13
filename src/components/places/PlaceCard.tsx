@@ -56,7 +56,7 @@ export default function PlaceCard({ place, onToggleFavorite, onToggleVisited, on
       exit={{ opacity: 0, y: -10, scale: 0.95 }}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3 }}
-      className="group bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 rounded-2xl overflow-hidden flex flex-col"
+      className="group bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 rounded-2xl overflow-hidden flex flex-col active:scale-95 transition-transform"
     >
       {/* Gradient Image Placeholder */}
       <div className={`relative h-44 bg-gradient-to-br ${gradient} overflow-hidden`}>

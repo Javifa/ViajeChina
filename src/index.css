@@ -5,10 +5,12 @@
 @layer base {
   body {
     @apply bg-dark-bg text-gray-200 font-sans antialiased overflow-x-hidden;
+    -webkit-tap-highlight-color: transparent;
   }
   
   html {
     scroll-behavior: smooth;
+    overscroll-behavior-y: none; /* Prevents pull-to-refresh bounce on iOS if wanted, but standard is fine. Let's stick to standard but remove tap highlight */
   }
 }
 
@@ -30,6 +32,16 @@
   .border-city-chongqing { @apply border-[#f97316]; }
   .border-city-chengdu { @apply border-[#d946ef]; }
   .border-city-beijing { @apply border-[#ef4444]; }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 }
 
 /* Custom Scrollbar */

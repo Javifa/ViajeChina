@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { MapPin, Calendar, Compass, ShoppingBag, CheckSquare, Hotel, UtensilsCrossed, Train, Wallet, Bookmark } from 'lucide-react';
 
 import Navbar from './components/layout/Navbar';
+import MobileTabBar from './components/layout/MobileTabBar';
 import Footer from './components/layout/Footer';
 import Section from './components/layout/Section';
 import QuickToolsWidget from './components/widgets/QuickToolsWidget';
@@ -36,7 +37,7 @@ function HomePage() {
     <>
       <HeroSection />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 space-y-10 md:space-y-24">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 space-y-10 md:space-y-24 pb-24 md:pb-12">
         <Section id="ruta" title="Ruta del Viaje" subtitle="15 días de aventura" icon={Calendar}>
           <TimelineSection />
         </Section>
@@ -73,7 +74,7 @@ function HomePage() {
 function PlannerPage() {
   return (
     <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 space-y-10 md:space-y-24">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 space-y-10 md:space-y-24 pb-24 md:pb-12">
         
         <div>
           <h1 className="text-4xl font-bold text-white mb-2">Planificador</h1>
@@ -104,7 +105,7 @@ function PlannerPage() {
 function BudgetPage() {
   return (
     <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 pb-24 md:pb-12">
         <Section id="presupuesto" title="Presupuesto" subtitle="Control de gastos del viaje" icon={Wallet}>
           <BudgetDashboard />
         </Section>
@@ -116,7 +117,7 @@ function BudgetPage() {
 function ReservationsView() {
   return (
     <div className="pt-20 md:pt-24 min-h-screen bg-dark-bg">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 pb-24 md:pb-12">
         <Section id="reservas" title="Gestión de Reservas" subtitle="Panel central de pagos y reservas" icon={Bookmark}>
           <ReservationsPage />
         </Section>
@@ -140,6 +141,7 @@ function App() {
 
       <Footer />
       <QuickToolsWidget />
+      <MobileTabBar />
     </div>
   );
 }

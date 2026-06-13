@@ -118,8 +118,8 @@ export default function GallerySection() {
         </div>
       </div>
 
-      {/* Masonry Grid */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+      {/* Masonry Grid (Desktop) / Carousel (Mobile) */}
+      <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:block sm:columns-2 lg:columns-3 xl:columns-4 sm:space-y-4">
         {galleryItems.map((item, index) => (
           <motion.div
             key={item.id}
@@ -127,12 +127,12 @@ export default function GallerySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: index * 0.04 }}
-            className="break-inside-avoid"
+            className="flex-[0_0_75%] sm:flex-none snap-center sm:break-inside-avoid"
           >
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.25 }}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden cursor-pointer active:scale-95 sm:active:scale-100"
               style={{ height: item.height }}
             >
               {/* Gradient background */}

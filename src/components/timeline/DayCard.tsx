@@ -30,7 +30,7 @@ const DayCard: React.FC<DayCardProps> = ({ dayPlan }) => {
         className={`
           relative overflow-hidden cursor-pointer
           bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 rounded-2xl
-          transition-all duration-300
+          transition-all duration-300 active:scale-95
           hover:border-dark-border hover:bg-dark-surface/90
           ${isExpanded ? 'ring-1 ring-white/5' : ''}
         `}

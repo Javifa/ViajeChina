@@ -146,7 +146,7 @@ export default function PlacesSection() {
       {/* Places Grid */}
       <motion.div
         layout
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-5 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
         <AnimatePresence mode="popLayout">
           {filteredPlaces.map((place, index) => (
@@ -161,6 +161,7 @@ export default function PlacesSection() {
                 delay: index * 0.06,
                 layout: { duration: 0.3 },
               }}
+              className="flex-[0_0_85%] max-w-[320px] snap-center sm:flex-auto sm:max-w-none"
             >
               <PlaceCard
                 place={place}
@@ -261,6 +262,7 @@ function PlaceForm({ place, onSave, onClose }: {
                 <option value="shanghai">Shanghái</option>
                 <option value="zhangjiajie">Zhangjiajie</option>
                 <option value="chongqing">Chongqing</option>
+                <option value="chengdu">Chengdu</option>
                 <option value="beijing">Pekín</option>
               </select>
             </div>
