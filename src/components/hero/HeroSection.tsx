@@ -29,7 +29,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-dark-bg">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-dark-bg pt-24 pb-24">
       {/* === Background Layers === */}
 
       {/* Gradient base */}
@@ -105,9 +105,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-6"
+          className="mb-4 sm:mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 text-xs font-medium text-gray-400">
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 text-[10px] sm:text-xs font-medium text-gray-400">
             <span className="w-2 h-2 rounded-full bg-status-success animate-pulse" />
             1 Septiembre 2026 · 7 amigos · 15 días
           </span>
@@ -118,7 +118,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-3 sm:mb-4 leading-tight"
         >
           <span
             className="bg-clip-text text-transparent"
@@ -139,7 +139,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-xs sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-2"
         >
           15 días recorriendo{' '}
           <span className="text-city-shanghai font-medium">Shanghái</span>,{' '}
@@ -154,7 +154,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.45 }}
-          className="flex items-center justify-center gap-3 sm:gap-5 mb-12"
+          className="flex items-center justify-center gap-2 sm:gap-5 mb-8 sm:mb-12"
         >
           {[
             { value: countdown.days, label: 'Días' },
@@ -170,7 +170,7 @@ export default function HeroSection() {
                 className="relative"
               >
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-dark-surface/80 backdrop-blur-xl border border-dark-border/50 flex items-center justify-center">
-                  <span className="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">
+                  <span className="text-xl sm:text-3xl font-bold font-mono text-white tabular-nums">
                     {String(unit.value).padStart(2, '0')}
                   </span>
                 </div>
@@ -189,7 +189,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-14"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-10 sm:mb-14"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -205,8 +205,8 @@ export default function HeroSection() {
                 className={`absolute top-0 left-4 right-4 h-px bg-gradient-to-r ${stat.color} opacity-40 group-hover:opacity-80 transition-opacity`}
               />
               <stat.icon className="w-5 h-5 text-gray-500 group-hover:text-primary transition-colors mb-2" />
-              <p className="text-xl sm:text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+              <p className="text-lg sm:text-2xl font-bold text-white">{stat.value}</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -291,7 +291,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors cursor-pointer group"
+        className="absolute bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors cursor-pointer group hidden sm:flex"
       >
         <span className="text-xs font-medium uppercase tracking-wider group-hover:text-primary transition-colors">
           Explorar
