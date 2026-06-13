@@ -47,8 +47,13 @@ const routeSegments: { from: City; to: City }[] = [
 function FitBounds() {
   const map = useMap();
   useEffect(() => {
-    const bounds = L.latLngBounds(cityList.map(c => [c.coordinates[0], c.coordinates[1]]));
-    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 6 });
+    // Wait a bit for container animations to finish before invalidating size
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+      const bounds = L.latLngBounds(cityList.map(c => [c.coordinates[0], c.coordinates[1]]));
+      map.fitBounds(bounds, { padding: [20, 20], maxZoom: 6 });
+    }, 400);
+    return () => clearTimeout(timer);
   }, [map]);
   return null;
 }
